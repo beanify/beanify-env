@@ -1,6 +1,6 @@
 import { Beanify, PluginDoneCallback, PluginOptions } from 'beanify'
 
-export interface EnvironmentOptions extends PluginOptions {
+export class EnvironmentOptions extends PluginOptions {
   schema: Record<string, unknown>
   data?: Record<string, unknown>
   env?: boolean

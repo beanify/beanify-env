@@ -1,6 +1,6 @@
 {
   "name": "beanify-env",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "beanify-env",
   "main": "index.js",
   "scripts": {
