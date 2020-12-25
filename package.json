@@ -1,6 +1,6 @@
 {
   "name": "beanify-env",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "beanify-env",
   "main": "index.js",
   "scripts": {
@@ -9,12 +9,7 @@
     "lint:standard": "standard --verbose | snazzy",
     "lint:typescript": "eslint -c types/.eslintrc types/**/*.d.ts"
   },
-  "keywords": [
-    "beanify",
-    "beanify-plugin",
-    "beanify-env",
-    "micro-service"
-  ],
+  "keywords": ["beanify", "beanify-plugin", "beanify-env", "micro-service"],
   "author": "beanjs",
   "license": "MIT",
   "dependencies": {
@@ -41,7 +36,5 @@
     "type": "git",
     "url": "git+https://github.com/beanify/beanify-env.git"
   },
-  "pre-commit": [
-    "lint"
-  ]
+  "pre-commit": ["lint"]
 }
