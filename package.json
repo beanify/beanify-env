@@ -1,11 +1,13 @@
 {
   "name": "beanify-env",
-  "version": "1.0.1",
+  "version": "3.0.0",
   "description": "beanify-env",
   "main": "index.js",
   "scripts": {
-    "test": "standard && tap test/*.test.js --100 --cov --coverage-report=text",
-    "unit": "tap test/*.test.js --100 --cov --coverage-report=lcov"
+    "lint": "npm run lint:standard && npm run lint:typescript",
+    "lint:fix": "standard --fix",
+    "lint:standard": "standard --verbose | snazzy",
+    "lint:typescript": "eslint -c types/.eslintrc types/**/*.d.ts"
   },
   "keywords": [
     "beanify",
@@ -16,16 +18,30 @@
   "author": "beanjs",
   "license": "MIT",
   "dependencies": {
-    "beanify-plugin": "^1.0.3",
-    "env-schema": "^1.1.0"
+    "env-schema": "^2.0.1"
   },
   "devDependencies": {
-    "beanify": "^1.0.7",
-    "standard": "^14.3.1",
-    "tap": "^14.9.2"
+    "@typescript-eslint/eslint-plugin": "^4.9.1",
+    "@typescript-eslint/parser": "^4.9.1",
+    "beanify": "^3.0.5",
+    "eslint": "^7.15.0",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^5.0.0",
+    "pino-pretty": "^3.5.0",
+    "pre-commit": "^1.2.2",
+    "snazzy": "^9.0.0",
+    "standard": "^16.0.3",
+    "typescript": "^4.1.3"
   },
+  "typings": "index.d.ts",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/beanjs-framework/beanify-env.git"
-  }
+    "url": "git+https://github.com/beanify/beanify-env.git"
+  },
+  "pre-commit": [
+    "lint"
+  ]
 }

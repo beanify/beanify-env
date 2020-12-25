@@ -1,42 +1,58 @@
 # beanify-env
 
-[![JavaScript Style Guide](https://cdn.rawgit.com/standard/standard/master/badge.svg)](https://github.com/standard/standard)
+Tools for loading and checking environment variables
 
-## install
+## Install
 
+```bash
+npm i beanify-env --save
 ```
-npm i beanify-env
+
+with yarn
+
+```bash
+yarn add beanify-env
 ```
 
-## options
-
-* [env-schema](https://github.com/fastify/env-schema)
-
-## usage 
+## Usage
 
 ```javascript
-const Beanify=require("beanify")
-const beanifyPlugin=require("beanify-plugin")
+const Beanify = require('beanify')
+const Env = require('beanify-env')
+const beanify = Beanify({})
 
-const b=new Beanify({})
-
-b
-    .register(require("beanify-env"),{
-        schema: {
-            type: 'object',
-            required: ['PORT'],
-            properties: {
-                PORT: {
-                    type: 'integer',
-                    default: 6666
-                }
-            }
+beanify
+  .register(Env, {
+    schema: {
+      type: 'object',
+      properties: {
+        PORT: {
+          type: 'number'
         }
-    })
-    .ready((err)=>{
-        console.log(b.config.PORT==6666)
-        b.close()
-    })
-
+      },
+      required: ['PORT']
+    },
+    dotenv: true
+  })
+  .ready(e => {
+    e && beanify.$log.error(e.message)
+    beanify.print()
+    console.log(beanify.$env) // { PORT: 911 }
+  })
+```
 
 ```
+// .env
+PORT = 911
+```
+
+## Options
+
+- `schema`: (required) environment variable schema.check [here](https://json-schema.org/)
+- `data`: value of custom data
+- `env`: whether to load system environment variables.default true
+- `dotenv`: whether to load the intermediate environment variable of `.env` file.check [here](https://github.com/motdotla/dotenv#options)
+
+## Decorators
+
+- `$env`: gets the converted environment variable
