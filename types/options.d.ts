@@ -1,10 +1,11 @@
 import { Beanify, PluginDoneCallback, PluginOptions } from 'beanify'
+import { JSONSchemaType } from 'ajv'
 
 export class EnvironmentOptions extends PluginOptions {
-  schema: Record<string, unknown>
+  schema: JSONSchemaType<Record<string, any>, true>
   data?: Record<string, unknown>
   env?: boolean
-  dotenv?: boolean | Record<string, unknown>
+  dotenv?: boolean
 }
 
 export type BeanifyEnv = (
